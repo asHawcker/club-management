@@ -1,0 +1,334 @@
+.thumbnail {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .thumbnail .div {
+    background-color: #ffffff;
+    border: 10px solid;
+    border-color: #ffffff;
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+  }
+  
+  .thumbnail .text-wrapper {
+    position: absolute;
+    width: 155px;
+    top: 477px;
+    left: 190px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-wrapper-2 {
+    position: absolute;
+    width: 155px;
+    top: 510px;
+    left: 1053px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-wrapper-3 {
+    width: 155px;
+    top: 577px;
+    left: 1053px;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-wrapper-4 {
+    position: absolute;
+    width: 155px;
+    top: 648px;
+    left: 1053px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-wrapper-5 {
+    position: absolute;
+    width: 155px;
+    top: 544px;
+    left: 190px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-wrapper-6 {
+    position: absolute;
+    width: 155px;
+    top: 611px;
+    left: 190px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .overlap-group {
+    position: absolute;
+    width: 1920px;
+    height: 321px;
+    top: 0;
+    left: 0;
+  }
+  
+  .thumbnail .text-wrapper-7 {
+    width: 423px;
+    top: 203px;
+    left: 858px;
+    color: #ffffff;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    font-size: 64px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-wrapper-8 {
+    width: 550px;
+    height: 33px;
+    top: 122px;
+    left: 685px;
+    transform: rotate(-0.39deg);
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    font-size: 64px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .image {
+    position: absolute;
+    width: 1920px;
+    height: 252px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+  
+  .thumbnail .line {
+    position: absolute;
+    width: 2px;
+    height: 593px;
+    top: 341px;
+    left: 777px;
+    object-fit: cover;
+  }
+  
+  .thumbnail .text-field {
+    height: 25px;
+    top: 481px;
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    align-items: flex-start;
+    position: absolute;
+    left: 415px;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .thumbnail .state-layer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+    background-color: #e6e0e9;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .thumbnail .state-layer {
+    position: relative;
+    flex: 1;
+    align-self: stretch;
+    width: 100%;
+    flex-grow: 1;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .thumbnail .active-indicator {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    height: 1px;
+    object-fit: cover;
+  }
+  
+  .thumbnail .supporting-text {
+    position: absolute;
+    width: 226px;
+    height: 20px;
+    top: 25px;
+    left: 0;
+  }
+  
+  .thumbnail .text-field-2 {
+    height: 25px;
+    top: 548px;
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    align-items: flex-start;
+    position: absolute;
+    left: 415px;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .thumbnail .text-field-3 {
+    height: 26px;
+    top: 615px;
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    align-items: flex-start;
+    position: absolute;
+    left: 415px;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .thumbnail .supporting-text-2 {
+    position: absolute;
+    width: 226px;
+    height: 20px;
+    top: 26px;
+    left: 0;
+  }
+  
+  .thumbnail .text-wrapper-9 {
+    width: 209px;
+    top: 671px;
+    left: 190px;
+    position: absolute;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-wrapper-10 {
+    position: absolute;
+    width: 155px;
+    top: 738px;
+    left: 190px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-wrapper-11 {
+    position: absolute;
+    width: 155px;
+    top: 806px;
+    left: 190px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-field-4 {
+    height: 25px;
+    top: 676px;
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    align-items: flex-start;
+    position: absolute;
+    left: 415px;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .thumbnail .text-field-5 {
+    height: 25px;
+    top: 743px;
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    align-items: flex-start;
+    position: absolute;
+    left: 415px;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .thumbnail .text-field-6 {
+    height: 25px;
+    top: 810px;
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    align-items: flex-start;
+    position: absolute;
+    left: 415px;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .thumbnail .text-wrapper-12 {
+    position: absolute;
+    width: 155px;
+    top: 866px;
+    left: 190px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .thumbnail .text-field-7 {
+    height: 25px;
+    top: 870px;
+    display: flex;
+    flex-direction: column;
+    width: 226px;
+    align-items: flex-start;
+    position: absolute;
+    left: 415px;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
