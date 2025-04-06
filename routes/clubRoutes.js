@@ -1,8 +1,8 @@
 import express from "express";
 import { getClubs, addClub, getClub, updateClub, removeClub } from "../controllers/clubControllers.js";
-export const router = express.Router();
+export const clubRouter = express.Router();
 
-router.route("/").get(getClubs).post(addClub);
+clubRouter.route("/").get(getClubs).post(addClub);
 
-router.route("/:id").get(getClub).put(updateClub).delete(removeClub);
+clubRouter.route("/:id").get(getClub).put(updateClub).delete(removeClub);
 

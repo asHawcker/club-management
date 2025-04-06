@@ -11,7 +11,8 @@ const SERVER_OK = parseInt(process.env.SERVER_OK, 10);
 
 export const getClubs = asyncHandler(async (req, res) => {
     const [rows] = await conn.query("SELECT * FROM CLUB");
-    res.status(SERVER_OK).json({ message: rows });
+    res.status(SERVER_OK)
+    res.render('clubs', { clubs: rows });
 });
 
 export const addClub = asyncHandler(async (req, res) => {
@@ -40,12 +41,13 @@ export const getClub = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
     try {
-        const [rows] = await conn.query("SELECT * FROM CLUB WHERE id = ?", [id]);
+        const [rows] = await conn.query("SELECT * FROM CLUB WHERE PIC = ?", [id]);
         if (rows.length === 0) {
             res.status(NOT_FOUND);
             throw new Error("Club not found");
         }
-        res.status(SERVER_OK).json({ message: rows[0] });
+        res.status(SERVER_OK)
+        res.render('clubs', { clubs: rows });
     } catch (err) {
         res.status(SERVER_ERROR);
         throw new Error("Error retrieving club");

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/css/globals.css"/>
+    <link rel="stylesheet" href="/css/login/style.css" />
+    <link rel="stylesheet" href="/css/login/styleguide.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="thumbnail">
+      <div class="overlap">
+        <img class="image" src="/img/image-7.png" />
+        <div class="frame">
+          <div class="div">
+            <div class="div-wrapper">
+              <div class="text-wrapper">Login to your Account</div>
+            </div>
+          </div>
+
+          <form method="POST" action="/auth" class="div">
+            <div class="frame-2">
+              <div class="frame-3">
+                <label class="text-wrapper-2" for="email">Username</label>
+                <input class="frame-4" type="email" id="email" name="email" required />
+              </div>
+
+              <div class="frame-wrapper">
+                <div class="frame-3">
+                  <label class="text-wrapper-2" for="password">Password</label>
+                  <input class="frame-4" type="password" id="password" name="password" required />
+                </div>
+              </div>
+            </div>
+
+            <% if (error) { %>
+              <div class="error-message" style="color: red; margin-top: 10px;"><%= error %></div>
+            <% } %>
+
+            <button type="submit" class="frame-5">
+              <div class="text-wrapper-3">Login</div>
+            </button>
+          </form>
+        </div>
+
+        <div class="overlap-group">
+          <div class="frame-6"><div class="frame-7"></div></div>
+          <div class="text-wrapper-4">IIITDM CLUBS</div>
+        </div>
+      </div>
+
+      <div class="overlap-group-2">
+        <div class="frame-8">
+          <div class="div-wrapper"><div class="text-wrapper">Login to your Account</div></div>
+        </div>
+        <img class="chatgpt-image-apr" src="/img/admin.png" />
+      </div>
+    </div>
+  </body>
+</html>
