@@ -1,0 +1,87 @@
+-- PIC (Person In Charge) Table
+CREATE TABLE PIC (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    pass_w VARCHAR(255) NOT NULL
+);
+
+-- CLUB Table
+CREATE TABLE CLUB (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    pass_w VARCHAR(255) NOT NULL,
+    pic INT,
+    room VARCHAR(50),
+    funds_alloted DECIMAL(10,2),
+    funds_utilised DECIMAL(10,2),
+    logo_url VARCHAR(255),
+    type ENUM('Technical', 'Cultural'),
+    FOREIGN KEY (PIC) REFERENCES PIC(id)
+);
+
+-- EVENT Table
+CREATE TABLE EVENT (
+    uid INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    funds_Alloted DECIMAL(10,2),
+    club INT NOT NULL,
+    FOREIGN KEY (club) REFERENCES CLUB(id)
+);
+
+-- COMPETITIONS Table
+CREATE TABLE COMPETITIONS (
+    uid INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    winners VARCHAR(255),
+    prize_pool DECIMAL(10,2),
+    club INT NOT NULL,
+    FOREIGN KEY (club) REFERENCES CLUB(id)
+);
+
+-- FUNDS Table
+CREATE TABLE FUNDS (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    value DECIMAL(10,2) NOT NULL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    club INT NOT NULL,
+    FOREIGN KEY (club) REFERENCES CLUB(id)
+);
+
+-- SPONSOR Table
+CREATE TABLE SPONSOR (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    value DECIMAL(10,2) NOT NULL,
+    from_Company VARCHAR(255),
+    club INT NOT NULL,
+    FOREIGN KEY (club) REFERENCES CLUB(id)
+);
+
+-- ASSET Table
+CREATE TABLE ASSET (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    value DECIMAL(10,2),
+    image VARCHAR(255),
+    club INT NOT NULL,
+    FOREIGN KEY (club) REFERENCES CLUB(id)
+);
+
+-- MEMBER Table
+CREATE TABLE MEMBER (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    club INT NOT NULL,
+    FOREIGN KEY (club) REFERENCES CLUB(id)
+);
+
+
+
+
+
+
+
