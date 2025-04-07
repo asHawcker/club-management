@@ -98,3 +98,8 @@ export const updateClub = asyncHandler(async (req, res) => {
         throw new Error("Error updating club");
     }
 });
+export const getClubAssets = asyncHandler(async (req, res) => {
+    const clubId = req.params.id;
+    const [assets] = await conn.query("SELECT name, value FROM ASSET WHERE club = ?", [clubId]);
+    res.json(assets);
+  });
