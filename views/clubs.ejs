@@ -68,6 +68,7 @@
       background: #0056b3;
     }
   </style>
+  <script src="/js/dropdowns.js"></script>
 </head>
 <body>
   <div class="container">
@@ -92,33 +93,5 @@
     <% } %>
   </div>
 
-<script>
-  function toggleAssets(clubId) {
-    const id = parseInt(clubId, 10);
-    const list = document.getElementById(`assets-${clubId}`);
-    const button = document.querySelector(`button[onclick="toggleAssets('${clubId}')"]`);
-
-    if (list.style.display === "none") {
-      fetch(`/clubs/${clubId}/assets`)
-        .then(res => res.json())
-        .then(data => {
-          list.innerHTML = ''; // Clear previous items
-          data.forEach(asset => {
-            const li = document.createElement('li');
-            li.textContent = asset.name + " - ₹" + asset.value;
-            list.appendChild(li);
-          });
-          list.style.display = "block";
-          button.textContent = "Hide Assets"; // Update button text
-        })
-        .catch(err => {
-          console.error("Error fetching assets:", err);
-        });
-    } else {
-      list.style.display = "none";
-      button.textContent = "Show Assets"; // Update button text
-    }
-  }
-</script>
 </body>
 </html>

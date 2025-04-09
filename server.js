@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 import {clubRouter} from "./routes/clubRoutes.js";
 import {authRouter} from "./routes/authRoutes.js";
+import {assetRouter} from "./routes/assetRoutes.js";
 
 import {errorHandler} from "./middlewares/errorHandler.js";
 import path from 'path';
@@ -24,6 +25,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use("/clubs", clubRouter);
 app.use("/auth", authRouter);
+app.use("/assets", assetRouter);
 app.use(errorHandler);
 
 app.listen(port,() => {
