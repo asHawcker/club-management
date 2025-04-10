@@ -33,3 +33,34 @@ export const addAsset = asyncHandler(async (req, res) => {
         throw new Error("Error adding asset");
     }
 });
+
+export const getClubCompetitions = asyncHandler(async (req, res) => {
+    const clubId = req.params.id;
+    const [competitions] = await conn.query("SELECT * FROM COMPETITIONS WHERE club = ?", [clubId]);
+    res.json(competitions);
+  });
+
+
+export const getClubEvents = asyncHandler(async (req, res) => {
+    const clubId = req.params.id;
+    const [competitions] = await conn.query("SELECT * FROM EVENT WHERE club = ?", [clubId]);
+    res.json(competitions);
+});
+
+export const getClubMembers = asyncHandler(async (req, res) => {
+    const clubId = req.params.id;
+    const [competitions] = await conn.query("SELECT * FROM MEMBER WHERE club = ?", [clubId]);
+    res.json(competitions);
+});
+
+export const getClubSponsors = asyncHandler(async (req, res) => {
+    const clubId = req.params.id;
+    const [competitions] = await conn.query("SELECT * FROM SPONSOR WHERE club = ?", [clubId]);
+    res.json(competitions);
+});
+
+export const getClubFunds = asyncHandler(async (req, res) => {
+    const clubId = req.params.id;
+    const [competitions] = await conn.query("SELECT * FROM FUNDS WHERE club = ?", [clubId]);
+    res.json(competitions);
+});

@@ -10,7 +10,7 @@ const NOT_FOUND = parseInt(process.env.NOT_FOUND, 10);
 const SERVER_OK = parseInt(process.env.SERVER_OK, 10);
 
 export const getClubs = asyncHandler(async (req, res) => {
-    const [rows] = await conn.query("SELECT name, type FROM CLUB");
+    const [rows] = await conn.query("SELECT id,name, type FROM CLUB");
     res.status(SERVER_OK)
     res.render('allclubs', { clubs: rows });
 });
@@ -100,3 +100,24 @@ export const updateClub = asyncHandler(async (req, res) => {
         throw new Error("Error updating club");
     }
 });
+
+export const getClubDetails = asyncHandler(async (req, res) => {
+    const { id, cid } = req.params;
+  
+    try {
+      const [club] = await conn.query("SELECT * FROM CLUB WHERE id = ?", [cid]);
+      if (club.length === 0) {
+        return res.status(404).render("error", { message: "Club not found" });
+      }
+      const [lead] = await conn.query("SELECT M.name FROM CLUB C INNER JOIN MEMBER M ON C.id = M.club WHERE C.id = ? AND M.position = 'lead'", [cid]);
+      if (lead.length === 0) {
+        return res.status(404).render("error", { message: "Lead not found" });
+      }
+  
+      res.render("viewclub", {club: club[0], lead: lead[0]});
+  
+    } catch (err) {
+      console.error(err);
+      res.status(500).render("error", { message: "Error retrieving club details" });
+    }
+  });

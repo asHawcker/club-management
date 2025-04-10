@@ -112,6 +112,16 @@ footer {
   color: white;
 }
 
+.error-message {
+  color: #d9534f;
+  background-color: #fbe9e7;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -150,5 +160,14 @@ footer {
   footer {
     margin-top: 20px;
     font-size: 14px;
+  }
+  .error-message {
+    color: #d9534f;
+    background-color: #fbe9e7;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
   }
 }

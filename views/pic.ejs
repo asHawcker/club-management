@@ -30,7 +30,7 @@
       <h2>Technical</h2>
       <ul>
         <% clubs.filter(c => c.type === 'Technical').forEach(club => { %>
-          <li><%= club.name %></li>
+          <li><a href="details/<%= club.id %>" class="club-link"><%= club.name %></a></li>
         <% }); %>
       </ul>
     </div>
@@ -40,7 +40,7 @@
       <h2>Cultural</h2>
       <ul>
         <% clubs.filter(c => c.type === 'Cultural').forEach(club => { %>
-          <li><%= club.name %></li>
+          <li><a href="details/<%= club.id %>" class="club-link"><%= club.name %></a></li>
         <% }); %>
       </ul>
     </div>
@@ -56,7 +56,7 @@
         <H3>My Clubs</H3>
         <ul type="none">
           <% myclubs.forEach(club => { %>
-            <li><%= club.name %></li>
+            <li><a href="details/<%= club.id %>" class="club-link"><%= club.name %></a></li>
           <% }); %>
         </ul>
       

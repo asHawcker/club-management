@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= club.name %> | Club Details</title>
+  <link rel="stylesheet" href="/css/club/style.css" />
+</head>
+<body>
+
+  <!-- Top Image Bar -->
+  <div class="top-banner">
+    <img src="/img/image-8.png" alt="Banner" />
+  </div>
+
+  <!-- Content -->
+  <div class="club-layout">
+    
+    <!-- Left: Club Info -->
+    <div class="club-info">
+      <h1><%= club.name %></h1>
+      <p><strong>Type:</strong> <%= club.type %></p>
+      <p><strong>Email:</strong> <%= club.email %></p>
+      <p><strong>Funds Used:</strong> ₹<%= club.funds_utilised %></p>
+      <p><strong>Funds Allotted:</strong> ₹<%= club.funds_alloted %></p>
+      <p><strong>Room:</strong> <%= club.room %></p>
+      <p><strong>Lead:</strong> <%= lead.name %></p>
+    </div>
+
+    <!-- Right: Assets List -->
+    <div class="club-assets">
+        <!-- Tab Button Row -->
+        <div class="tab-buttons">
+          <button class="dropdown-btn" onclick="toggleAssets('<%= club.id %>')">Assets</button>
+          <button class="dropdown-btn" onclick="toggleCompetitions('<%= club.id %>')">Competitions</button>
+          <button class="dropdown-btn" onclick="toggleEvents('<%= club.id %>')">Events</button>
+          <button class="dropdown-btn" onclick="toggleMembers('<%= club.id %>')">Members</button>
+          <button class="dropdown-btn" onclick="toggleSponsors('<%= club.id %>')">Sponsors</button>
+          <button class="dropdown-btn" onclick="toggleFunds('<%= club.id %>')">Funds</button>
+        </div>
+      
+        <!-- Dropdown Content -->
+        <div class="dropdown-content">
+          <ul class="assets" id="assets"></ul>
+        </div>
+      </div>
+      
+
+  </div>
+  <script src="/js/dropdowns.js"></script>
+</body>
+</html>

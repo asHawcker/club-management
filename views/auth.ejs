@@ -21,7 +21,9 @@
 
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required />
-
+          <% if (error) { %>
+            <div class="error-message"><%= error %></div>
+          <% } %>
           <button type="submit">Login</button>
         </form>
         <a href="../clubs/guest" class="guest-btn">Continue as Guest</a>
