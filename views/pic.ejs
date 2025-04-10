@@ -2,6 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clubs & Events</title>
+  <link rel="stylesheet" href="/css/pic/style.css" />
+</head>
+<body>
+
+  <!-- Images -->
+  <div class="image-row">
+    <img src="/img/image-2.png" alt="Event Image 1" />
+    <img src="/img/image-3.png" alt="Event Image 2" />
+    <img src="/img/image-4.png" alt="Event Image 3" />
+    <img src="/img/image-5.png" alt="Event Image 4" />
+    <div class="image-overlay">
+      <h2>Welcome <% pic.forEach(pic => { %>
+        <%= pic.name %>
+      <% }); %>!</h2>
+    </div>
+  </div>
+  
+
+  <!-- Content below images -->
+  <div class="main-content">
+    
+    <!-- Technical Clubs -->
+    <div class="column technical">
+      <h2>Technical</h2>
+      <ul>
+        <% clubs.filter(c => c.type === 'Technical').forEach(club => { %>
+          <li><%= club.name %></li>
+        <% }); %>
+      </ul>
+    </div>
+
+    <!-- Cultural Clubs -->
+    <div class="column cultural">
+      <h2>Cultural</h2>
+      <ul>
+        <% clubs.filter(c => c.type === 'Cultural').forEach(club => { %>
+          <li><%= club.name %></li>
+        <% }); %>
+      </ul>
+    </div>
+
+    <!-- Contact Form -->
+    <form class="form-section">
+      <label>
+        Email: <% pic.forEach(pic => { %>
+          <%= pic.email %>
+        <% }); %>
+      </label>
+      <hr>
+        <H3>My Clubs</H3>
+        <ul type="none">
+          <% myclubs.forEach(club => { %>
+            <li><%= club.name %></li>
+          <% }); %>
+        </ul>
+      
+    </form>
+
+  </div>
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
   <title>Your Clubs</title>
   <style>
     body {
@@ -94,4 +163,4 @@
   </div>
 
 </body>
-</html>
+</html> -->

@@ -10,9 +10,9 @@ const NOT_FOUND = parseInt(process.env.NOT_FOUND, 10);
 const SERVER_OK = parseInt(process.env.SERVER_OK, 10);
 
 export const getClubs = asyncHandler(async (req, res) => {
-    const [rows] = await conn.query("SELECT * FROM CLUB");
+    const [rows] = await conn.query("SELECT name, type FROM CLUB");
     res.status(SERVER_OK)
-    res.render('clubs', { clubs: rows });
+    res.render('allclubs', { clubs: rows });
 });
 
 export const addClub = asyncHandler(async (req, res) => {
@@ -41,13 +41,15 @@ export const getClub = asyncHandler(async (req, res) => {
     const { id } = req.params;
 
     try {
-        const [rows] = await conn.query("SELECT * FROM CLUB WHERE PIC = ?", [id]);
+        const [rows] = await conn.query("SELECT * FROM CLUB");
         if (rows.length === 0) {
             res.status(NOT_FOUND);
             throw new Error("Club not found");
         }
+        const [rows2] = await conn.query("SELECT * FROM CLUB where pic = ?", [id]);
+        const [rows3] = await conn.query("SELECT email, name FROM PIC where id = ?", [id]);
         res.status(SERVER_OK)
-        res.render('clubs', { clubs: rows });
+        res.render('pic', { clubs: rows, myclubs : rows2, pic: rows3 });
     } catch (err) {
         res.status(SERVER_ERROR);
         throw new Error("Error retrieving club");
@@ -98,8 +100,3 @@ export const updateClub = asyncHandler(async (req, res) => {
         throw new Error("Error updating club");
     }
 });
-export const getClubAssets = asyncHandler(async (req, res) => {
-    const clubId = req.params.id;
-    const [assets] = await conn.query("SELECT name, value FROM ASSET WHERE club = ?", [clubId]);
-    res.json(assets);
-  });

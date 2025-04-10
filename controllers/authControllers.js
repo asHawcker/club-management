@@ -24,8 +24,7 @@ export const attemptAuth = asyncHandler(async (req, res) => {
         if (rows.length === 0) {
             res.render('auth', { error: 'Invalid email or password.' });
         } else {
-            // Redirect or set session here
-            res.redirect(`/clubs/${rows[0].id}`);
+            res.redirect(`/clubs/kdp6U2HBnl${rows[0].id}/e7aYVh2`);
         }
     } catch (err) {
         console.error(err);

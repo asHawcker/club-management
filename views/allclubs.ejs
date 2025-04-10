@@ -15,6 +15,7 @@
     <img src="/img/image-4.png" alt="Event Image 3" />
     <img src="/img/image-5.png" alt="Event Image 4" />
   </div>
+  
 
   <!-- Content below images -->
   <div class="main-content">
@@ -23,12 +24,9 @@
     <div class="column technical">
       <h2>Technical</h2>
       <ul>
-        <li>MaRS</li>
-        <li>AUV</li>
-        <li>SAE</li>
-        <li>Robotics</li>
-        <li>Designers</li>
-        <li>Developers</li>
+        <% clubs.filter(c => c.type === 'Technical').forEach(club => { %>
+          <li><%= club.name %></li>
+        <% }); %>
       </ul>
     </div>
 
@@ -36,26 +34,11 @@
     <div class="column cultural">
       <h2>Cultural</h2>
       <ul>
-        <li>Footlights</li>
-        <li>Music</li>
-        <li>Imagix</li>
-        <li>Art</li>
-        <li>Literati</li>
-        <li>Tamil Salarai</li>
+        <% clubs.filter(c => c.type === 'Cultural').forEach(club => { %>
+          <li><%= club.name %></li>
+        <% }); %>
       </ul>
     </div>
-
-    <!-- Contact Form -->
-    <form class="form-section">
-      <label>
-        Club:
-        <input type="text" name="club" placeholder="Enter club name" />
-      </label>
-      <label>
-        Email:
-        <input type="email" name="email" placeholder="Enter your email" />
-      </label>
-    </form>
 
   </div>
 
