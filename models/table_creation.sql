@@ -76,7 +76,8 @@ CREATE TABLE MEMBER (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     club INT NOT NULL,
-    FOREIGN KEY (club) REFERENCES CLUB(id)
+    position ENUM('member', 'Lead') NOT NULL,
+    FOREIGN KEY (club) REFERENCES CLUB(id),
 );
 
 
