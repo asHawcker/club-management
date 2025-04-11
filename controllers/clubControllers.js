@@ -2,6 +2,7 @@ import { conn } from "../config/db-setup.js";
 import asyncHandler from "express-async-handler";
 import dotenv from "dotenv";
 
+
 dotenv.config();
 
 const BAD_REQUEST = parseInt(process.env.BAD_REQUEST, 10);
@@ -78,9 +79,9 @@ export const removeClub = asyncHandler(async (req, res) => {
 
 export const updateClub = asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const { name, email, pass, pic, room, fa, fu, logo_url, type } = req.body;
-
-    if (!name || !email || !pass || !pic || !room || !fa || !fu || !type) {
+    const { name, email, pass_w, pic, room, funds_alloted, funds_utilised, logo_url, type } = req.body;
+    console.log("body : ", req.body);
+    if (!name || !email || !pass_w || !pic || !room || !funds_alloted || !funds_utilised || !type) {
         res.status(BAD_REQUEST);
         throw new Error("All fields (name, email, pass, pic, room, fa, fu, logo_url, type) are required");
     }
@@ -88,13 +89,13 @@ export const updateClub = asyncHandler(async (req, res) => {
     try {
         const [result] = await conn.query(
             "UPDATE CLUB SET name = ?, email = ?, pass_w = ?, pic = ?, room = ?, funds_alloted = ?, funds_utilised = ?, logo_url = ?, type = ? WHERE id = ?",
-            [name, email, pass, pic, room, fa, fu, logo_url, type, id]
+            [name, email, pass_w, pic, room, funds_alloted, funds_utilised, logo_url, type, id]
         );
         if (result.affectedRows === 0) {
             res.status(NOT_FOUND);
             throw new Error("Club not found");
         }
-        res.status(SERVER_OK).json({ message: `Club with id ${id} updated successfully` });
+        res.status(SERVER_OK).send("<H2>Club updated successfully</H2>");
     } catch (err) {
         res.status(SERVER_ERROR);
         throw new Error("Error updating club");
@@ -136,6 +137,39 @@ export const getClubDetails = asyncHandler(async (req, res) => {
       }
   
       res.render("viewclub", {club: club[0], lead: lead[0]});
+  
+    } catch (err) {
+      console.error(err);
+      res.status(500).render("error", { message: "Error retrieving club details" });
+    }
+  });
+
+export const editClubDetails = asyncHandler(async (req, res) => {
+    const { id, cid } = req.params;
+  
+    try {
+        const [club] = await conn.query("SELECT * FROM CLUB WHERE id = ?", [cid]);
+        const [members] = await conn.query("SELECT * FROM MEMBER WHERE club = ?", [cid]);
+        const [assets] = await conn.query("SELECT * FROM ASSET WHERE club = ?", [cid]);
+        const [events] = await conn.query("SELECT * FROM EVENT WHERE club = ?", [cid]);
+        const [competitions] = await conn.query("SELECT * FROM COMPETITIONS WHERE club = ?", [cid]);
+        const [funds] = await conn.query("SELECT * FROM FUNDS WHERE club = ?", [cid]);
+        const [sponsors] = await conn.query("SELECT * FROM SPONSOR WHERE club = ?", [cid]);
+        
+        if (club.length === 0) {
+          return res.status(404).render("error", { message: "Club not found" });
+        }
+        res.render("edit", {
+          club: club[0],
+          members,
+          assets,
+          events,
+          competitions,
+          funds,
+          sponsors
+        });
+  
+    
   
     } catch (err) {
       console.error(err);

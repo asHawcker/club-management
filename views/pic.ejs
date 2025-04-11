@@ -56,7 +56,11 @@
         <H3>My Clubs</H3>
         <ul type="none">
           <% myclubs.forEach(club => { %>
-            <li><a href="details/<%= club.id %>" class="club-link"><%= club.name %></a></li>
+            <li><a href="details/<%= club.id %>" class="club-link" id="my-club-link"><%= club.name %></a>
+              <a href="edit/H7g6f9Jf<%= club.id %>" class="edit-icon" title="Edit Club">
+                <img src="/img/edit.svg" alt="Edit" />
+              </a>
+            </li>
           <% }); %>
         </ul>
       

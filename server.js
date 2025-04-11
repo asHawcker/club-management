@@ -9,6 +9,9 @@ import {errorHandler} from "./middlewares/errorHandler.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
 
+import methodOverride from 'method-override';
+
+
 dotenv.config(); 
 
 const app = express();
@@ -18,6 +21,7 @@ const port = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

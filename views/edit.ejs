@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edit <%= club.name %></title>
+  <link rel="stylesheet" href="/css/edit/style.css" />
+</head>
+<body>
+
+  <!-- Banner Image -->
+  <div class="top-banner">
+    <img src="/img/image-8.png" alt="Club Banner" />
+  </div>
+
+  <div class="form-wrapper">
+    <h1>Edit Club Details</h1>
+
+    <!-- Club Info -->
+    <form method="POST" action="/clubs/kdp6U2HBnl<%= club.id %>/e7aYVh2?_method=PUT">
+      <div class="form-group"><label>Club Name</label>
+        <input type="text" name="name" value="<%= club.name %>" required />
+      </div>
+      <div class="form-group"><label>Club Email</label>
+        <input type="email" name="email" value="<%= club.email %>" required />
+      </div>
+      <div class="form-group"><label>Password</label>
+        <input type="text" name="pass_w" value="<%= club.pass_w %>" required />
+      </div>
+      <div class="form-group"><label>Club Type</label>
+        <input type="text" name="type" value="<%= club.type %>" required />
+      </div>
+      <div class="form-group"><label>PIC</label>
+        <input type="text" name="pic" value="<%= club.pic %>" readonly />
+      </div>
+      <div class="form-group"><label>Funds Allotted</label>
+        <input type="number" name="funds_alloted" value="<%= club.funds_alloted %>" step="0.01" required/>
+      </div>
+      <div class="form-group"><label>Funds Utilised</label>
+        <input type="number" name="funds_utilised" value="<%= club.funds_utilised %>" step="0.01" required />
+      </div>
+      <div class="form-group"><label>Room</label>
+        <input type="text" name="room" value="<%= club.room %>" required />
+      </div>
+      <div class="form-group"><label>Logo URL</label>
+        <input type="text" name="logo_url" value="<%= club.logo_url %>" />
+      </div>
+      <div class="form-buttons">
+        <button type="submit" class="save">Save Changes</button>
+        <button type="reset" class="reset">Reset</button>
+      </div>
+    </form>
+
+    <!-- Members -->
+    <section class="section-wrapper">
+      <h2>Members</h2>
+      <ul class="section-list">
+        <% members.forEach(m => { %>
+          <li>
+            <%= m.name %> (<%= m.position %>) - <%= m.email %>
+            <form method="POST" action="/assets/m/<%= m.id %>?_method=DELETE" class="inline-form">
+              <button type="submit">Remove</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+      <form method="POST" action="/assets/m/add">
+        <input type="hidden" name="club" value="<%= club.id %>"/>
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="text" name="role" placeholder="Role" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <button type="submit">Add Member</button>
+      </form>
+    </section>
+
+    <!-- Events -->
+    <section class="section-wrapper">
+      <h2>Events</h2>
+      <ul class="section-list">
+        <% events.forEach(e => { %>
+          <li>
+            <%= e.name %> — ₹<%= e.funds_Alloted %>
+            <form method="POST" action="/assets/e/<%= e.uid %>?_method=DELETE" class="inline-form">
+              <button type="submit">Remove</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+      <form method="POST" action="/assets/e/add">
+        <input type="hidden" name="club" value="<%= club.id %>"/>
+        <input type="text" name="name" placeholder="Event Name" required />
+        <input type="number" name="funds_Alloted" placeholder="Funds Allotted" step="0.01" required />
+        <button type="submit">Add Event</button>
+      </form>
+    </section>
+
+    <!-- Competitions -->
+    <section class="section-wrapper">
+      <h2>Competitions</h2>
+      <ul class="section-list">
+        <% competitions.forEach(c => { %>
+          <li>
+            <%= c.name %> — ₹<%= c.prize_pool %> — Winners: <%= c.winners || 'N/A' %>
+            <form method="POST" action="/assets/c/<%= c.uid %>?_method=DELETE" class="inline-form">
+              <button type="submit">Remove</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+      <form method="POST" action="/assets/c/add">
+        <input type="hidden" name="club" value="<%= club.id %>"/>
+        <input type="text" name="name" placeholder="Competition Name" required />
+        <input type="number" name="prize_pool" placeholder="Prize Pool" step="0.01" required />
+        <textarea name="description" placeholder="Description (optional)"></textarea>
+        <input type="text" name="winners" placeholder="Winners (optional)" />
+        <button type="submit">Add Competition</button>
+      </form>
+    </section>
+
+    <!-- Assets -->
+    <section class="section-wrapper">
+      <h2>Assets</h2>
+      <ul class="section-list">
+        <% assets.forEach(a => { %>
+          <li>
+            <%= a.name %> — ₹<%= a.value %>
+            <form method="POST" action="/assets/<%= a.id %>?_method=DELETE" class="inline-form">
+              <button type="submit">Remove</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+      <form method="POST" action="/assets/add">
+        <input type="hidden" name="club" value="<%= club.id %>"/>
+        <input type="text" name="name" placeholder="Asset Name" required />
+        <input type="number" name="value" placeholder="Value" step="0.01" required />
+        <textarea name="description" placeholder="Description (optional)"></textarea>
+        <button type="submit">Add Asset</button>
+      </form>
+    </section>
+
+    <!-- Sponsors -->
+    <section class="section-wrapper">
+      <h2>Sponsors</h2>
+      <ul class="section-list">
+        <% sponsors.forEach(s => { %>
+          <li>
+            <%= s.from_Company %> — ₹<%= s.value %>
+            <form method="POST" action="/assets/s/<%= s.id %>?_method=DELETE" class="inline-form">
+              <button type="submit">Remove</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+      <form method="POST" action="/assets/s/add">
+        <input type="hidden" name="club" value="<%= club.id %>"/>
+        <input type="text" name="from_Company" placeholder="Company Name" required />
+        <input type="number" name="value" placeholder="Value" step="0.01" required />
+        <button type="submit">Add Sponsor</button>
+      </form>
+    </section>
+
+    <!-- Funds -->
+    <section class="section-wrapper">
+      <h2>Funds History</h2>
+      <ul class="section-list">
+        <% funds.forEach(f => { %>
+          <li>
+            ₹<%= f.value %> — <%= f.timestamp.toLocaleString() %>
+            <form method="POST" action="/assets/f/<%= f.id %>?_method=DELETE" class="inline-form">
+              <button type="submit">Remove</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+      <form method="POST" action="/assets/f/add">
+        <input type="hidden" name="club" value="<%= club.id %>"/>
+        <input type="number" name="value" placeholder="Add Fund Amount" step="0.01" required />
+        <button type="submit">Add Fund</button>
+      </form>
+    </section>
+
+  </div>
+
+</body>
+</html>
